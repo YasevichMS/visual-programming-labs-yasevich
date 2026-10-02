@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1dn7xev" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="18.30.1">
+<?xml version='1.0' encoding='UTF-8'?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1dn7xev" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="18.30.1">
   <bpmn:process id="Process_1mmy98z" isExecutable="false">
     <bpmn:startEvent id="StartEvent_07bnees">
       <bpmn:outgoing>Flow_1oamc4p</bpmn:outgoing>
@@ -14,11 +14,16 @@
     </bpmn:task>
     <bpmn:sequenceFlow id="Flow_1oamc4p" sourceRef="StartEvent_07bnees" targetRef="Activity_0mtoni6" />
     <bpmn:sequenceFlow id="Flow_0s1u10q" sourceRef="Activity_0mtoni6" targetRef="Activity_16ypncq" />
-    <bpmn:task id="Activity_0i5ii9x" name="Система получает сведения о начислениях">
+    <bpmn:task id="Activity_CheckAccount" name="Проверить корректность данных">
       <bpmn:incoming>Flow_18kk1pq</bpmn:incoming>
+      <bpmn:outgoing>Flow_CheckAccountToCharges</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_0i5ii9x" name="Система получает сведения о начислениях">
+      <bpmn:incoming>Flow_CheckAccountToCharges</bpmn:incoming>
       <bpmn:outgoing>Flow_1ykvf93</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:sequenceFlow id="Flow_18kk1pq" sourceRef="Activity_16ypncq" targetRef="Activity_0i5ii9x" />
+    <bpmn:sequenceFlow id="Flow_CheckAccountToCharges" sourceRef="Activity_CheckAccount" targetRef="Activity_0i5ii9x" />
+    <bpmn:sequenceFlow id="Flow_18kk1pq" sourceRef="Activity_16ypncq" targetRef="Activity_CheckAccount" />
     <bpmn:exclusiveGateway id="Gateway_1z09f9p">
       <bpmn:incoming>Flow_1ykvf93</bpmn:incoming>
       <bpmn:outgoing>Flow_1my8ikk</bpmn:outgoing>
@@ -282,8 +287,10 @@
         <di:waypoint x="380" y="320" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_18kk1pq_di" bpmnElement="Flow_18kk1pq">
-        <di:waypoint x="480" y="320" />
-        <di:waypoint x="530" y="320" />
+        <di:waypoint x="430" y="360" />
+        <di:waypoint x="430" y="390" />
+        <di:waypoint x="440" y="390" />
+        <di:waypoint x="440" y="410" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1ykvf93_di" bpmnElement="Flow_1ykvf93">
         <di:waypoint x="630" y="320" />
@@ -438,6 +445,15 @@
         <di:waypoint x="2270" y="520" />
         <di:waypoint x="1170" y="520" />
         <di:waypoint x="1170" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_CheckAccount_di" bpmnElement="Activity_CheckAccount">
+        <dc:Bounds x="380" y="410" width="120" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_CheckAccountToCharges_di" bpmnElement="Flow_CheckAccountToCharges">
+        <di:waypoint x="500" y="445" />
+        <di:waypoint x="515" y="445" />
+        <di:waypoint x="515" y="320" />
+        <di:waypoint x="530" y="320" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
