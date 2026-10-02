@@ -4,17 +4,17 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="dn9BdiDT2lFfw0ihQ4OR-4" edge="1" parent="1" source="dn9BdiDT2lFfw0ihQ4OR-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#736CA8;labelBackgroundColor=none;fontColor=default;" target="dn9BdiDT2lFfw0ihQ4OR-2">
+        <mxCell id="Y8StZogj7JuiYPpuPP76-7" edge="1" parent="1" source="dn9BdiDT2lFfw0ihQ4OR-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#736CA8;fontColor=#1A1A1A;" target="dn9BdiDT2lFfw0ihQ4OR-2">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="dn9BdiDT2lFfw0ihQ4OR-1" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#5D7F99;fontColor=#1A1A1A;strokeColor=#D0CEE2;labelBackgroundColor=none;" value="Старт" vertex="1">
-          <mxGeometry height="80" width="80" x="290" y="40" as="geometry" />
+          <mxGeometry height="80" width="80" x="290" as="geometry" />
         </mxCell>
-        <mxCell id="AGDgR2Hw5qv4Mz9IrQqj-2" edge="1" parent="1" source="dn9BdiDT2lFfw0ihQ4OR-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#736CA8;labelBackgroundColor=none;fontColor=default;" target="AGDgR2Hw5qv4Mz9IrQqj-1" value="">
+        <mxCell id="Y8StZogj7JuiYPpuPP76-9" edge="1" parent="1" source="dn9BdiDT2lFfw0ihQ4OR-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#736CA8;fontColor=#1A1A1A;" target="Y8StZogj7JuiYPpuPP76-8">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="dn9BdiDT2lFfw0ihQ4OR-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#5D7F99;strokeColor=#D0CEE2;labelBackgroundColor=none;fontColor=#1A1A1A;" value="Выбор способа оплаты" vertex="1">
-          <mxGeometry height="60" width="120" x="270" y="170" as="geometry" />
+          <mxGeometry height="60" width="120" x="270" y="100" as="geometry" />
         </mxCell>
         <mxCell id="AGDgR2Hw5qv4Mz9IrQqj-4" edge="1" parent="1" source="AGDgR2Hw5qv4Mz9IrQqj-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#736CA8;labelBackgroundColor=none;fontColor=default;" target="AGDgR2Hw5qv4Mz9IrQqj-3" value="">
           <mxGeometry relative="1" as="geometry" />
@@ -100,7 +100,7 @@
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="90" y="900" />
-              <mxPoint x="90" y="200" />
+              <mxPoint x="90" y="130" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -115,6 +115,12 @@
         </mxCell>
         <mxCell id="AGDgR2Hw5qv4Mz9IrQqj-46" parent="1" style="ellipse;whiteSpace=wrap;html=1;shapeInside=1;fillColor=#5D7F99;strokeColor=#D0CEE2;rounded=0;labelBackgroundColor=none;fontColor=#1A1A1A;" value="Конец" vertex="1">
           <mxGeometry height="80" width="80" x="610" y="1000" as="geometry" />
+        </mxCell>
+        <mxCell id="Y8StZogj7JuiYPpuPP76-10" edge="1" parent="1" source="Y8StZogj7JuiYPpuPP76-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#736CA8;fontColor=#1A1A1A;" target="AGDgR2Hw5qv4Mz9IrQqj-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Y8StZogj7JuiYPpuPP76-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#D0CEE2;fontColor=#1A1A1A;fillColor=#5D7F99;" value="Проверить корректность данных" vertex="1">
+          <mxGeometry height="60" width="120" x="270" y="205" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
