@@ -1,3 +1,4 @@
+```mermaid
 sequenceDiagram
     actor P as Плательщик
     participant S as Система коммунальных платежей
@@ -36,3 +37,4 @@ sequenceDiagram
             P->>S: Повторная попытка
         end
     end
+    ```
