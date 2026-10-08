@@ -1,0 +1,124 @@
+[
+    {
+        "id": "67db3fc534aeea60",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "31068354729b09f9",
+        "type": "inject",
+        "z": "67db3fc534aeea60",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "lab2/Yasevich/function",
+        "payload": "12",
+        "payloadType": "num",
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "f1106f495e8c4f8b"
+            ]
+        ]
+    },
+    {
+        "id": "f1106f495e8c4f8b",
+        "type": "function",
+        "z": "67db3fc534aeea60",
+        "name": "function 1",
+        "func": "const numbers = [1, 2, 3, 4, 5, 6];\nlet ans = 1;\n\nfor (let i = 0; i < numbers.length; i++) {\n    ans *= numbers[i];\n}\n\nlet result;\n\nif (msg.payload > 11) {\n    result = {\n        input: msg.payload,\n        ans: ans,\n        message: \"Число больше 11\"\n    };\n} else if (msg.payload === 11) {\n    result = {\n        input: msg.payload,\n        ans: ans,\n        message: \"Число равно 11\"\n    };\n} else {\n    result = {\n        input: msg.payload,\n        ans: ans,\n        message: \"Число меньше 11\"\n    };\n}\n\nmsg.payload = result;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 280,
+        "wires": [
+            [
+                "56c8094a3fba438e"
+            ]
+        ]
+    },
+    {
+        "id": "56c8094a3fba438e",
+        "type": "switch",
+        "z": "67db3fc534aeea60",
+        "name": "switch по message",
+        "property": "payload.message",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Число больше 11",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 620,
+        "y": 280,
+        "wires": [
+            [
+                "920517f68dd48c87"
+            ],
+            [
+                "69dca34de2d495c9"
+            ]
+        ]
+    },
+    {
+        "id": "920517f68dd48c87",
+        "type": "debug",
+        "z": "67db3fc534aeea60",
+        "name": "debug выход 1 (больше 11)",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 880,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "69dca34de2d495c9",
+        "type": "debug",
+        "z": "67db3fc534aeea60",
+        "name": "debug выход 2 (равно/меньше)",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 340,
+        "wires": []
+    }
+]
