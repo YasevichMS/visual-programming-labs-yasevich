@@ -1,0 +1,76 @@
+[
+    {
+        "id": "10b945a2d8a0bf73",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "c5c85953a5d02e5b",
+        "type": "inject",
+        "z": "10b945a2d8a0bf73",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "lab2/Yasevich/function",
+        "payload": "5",
+        "payloadType": "num",
+        "x": 330,
+        "y": 360,
+        "wires": [
+            [
+                "9561bc52ef9db119"
+            ]
+        ]
+    },
+    {
+        "id": "9561bc52ef9db119",
+        "type": "function",
+        "z": "10b945a2d8a0bf73",
+        "name": "function 1",
+        "func": "const numbers = [1, 2, 3, 4, 5, 6];\nlet ans = 1;\n\nfor (let i = 0; i < numbers.length; i++) {\n    ans *= numbers[i];\n}\n\nlet result;\n\nif (msg.payload > 11) {\n    result = {\n        input: msg.payload,\n        ans: ans,\n        message: \"Число больше 11\"\n    };\n} else if (msg.payload === 11) {\n    result = {\n        input: msg.payload,\n        ans: ans,\n        message: \"Число равно 11\"\n    };\n} else {\n    result = {\n        input: msg.payload,\n        ans: ans,\n        message: \"Число меньше 11\"\n    };\n}\n\nmsg.payload = result;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 360,
+        "wires": [
+            [
+                "2fcf09d35ac0ceb0"
+            ]
+        ]
+    },
+    {
+        "id": "2fcf09d35ac0ceb0",
+        "type": "debug",
+        "z": "10b945a2d8a0bf73",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 360,
+        "wires": []
+    }
+]
