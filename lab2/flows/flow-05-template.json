@@ -1,0 +1,21 @@
+[
+    {
+        "id": "template_node",
+        "type": "template",
+        "z": "67db3fc534aeea60",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\n  \"student\": \"{{payload.name}}\",\n  \"laboratory\": {{payload.lab}},\n  \"result\": \"{{payload.status}}\",\n  \"message\": \"Студент {{payload.name}} успешно выполнил лабораторную работу №{{payload.lab}}\"\n}",
+        "output": "str",
+        "x": 550,
+        "y": 520,
+        "wires": [
+            [
+                "debug_template"
+            ]
+        ]
+    }
+]
