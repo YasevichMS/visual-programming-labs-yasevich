@@ -1,0 +1,20 @@
+[
+    {
+        "id": "http_text",
+        "type": "http in",
+        "z": "tab_endpoints",
+        "name": "GET /api/text",
+        "url": "/api/text",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "func_text"
+            ]
+        ]
+    }
+]
