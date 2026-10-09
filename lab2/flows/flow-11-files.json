@@ -1,0 +1,134 @@
+[
+    {
+        "id": "tab_file",
+        "type": "tab",
+        "label": "File Read/Write",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "inject_write",
+        "type": "inject",
+        "z": "tab_file",
+        "name": "Записать в файл",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 140,
+        "wires": [
+            [
+                "func_write"
+            ]
+        ]
+    },
+    {
+        "id": "func_write",
+        "type": "function",
+        "z": "tab_file",
+        "name": "Подготовить JSON",
+        "func": "const data = {\n    student: \"Yasevich\",\n    lab: 2,\n    timestamp: new Date().toISOString(),\n    message: \"Данные сохранены на диск\",\n    values: [10, 20, 30, 40]\n};\n\nmsg.payload = JSON.stringify(data, null, 2);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 140,
+        "wires": [
+            [
+                "file_out"
+            ]
+        ]
+    },
+    {
+        "id": "file_out",
+        "type": "file",
+        "z": "tab_file",
+        "name": "file out",
+        "filename": "/tmp/lab2_data.json",
+        "filenameType": "str",
+        "appendNewline": false,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "utf8",
+        "x": 610,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "inject_read",
+        "type": "inject",
+        "z": "tab_file",
+        "name": "Прочитать файл",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 280,
+        "wires": [
+            [
+                "file_in"
+            ]
+        ]
+    },
+    {
+        "id": "file_in",
+        "type": "file in",
+        "z": "tab_file",
+        "name": "file in",
+        "filename": "/tmp/lab2_data.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 400,
+        "y": 280,
+        "wires": [
+            [
+                "debug_file"
+            ]
+        ]
+    },
+    {
+        "id": "debug_file",
+        "type": "debug",
+        "z": "tab_file",
+        "name": "Содержимое файла",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 280,
+        "wires": []
+    }
+]
