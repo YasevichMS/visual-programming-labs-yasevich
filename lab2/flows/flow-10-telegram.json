@@ -1,0 +1,57 @@
+[
+    {
+        "id": "telegram_receiver",
+        "type": "telegram receiver",
+        "z": "96e887dd0f7e620e",
+        "name": "Telegram Receiver",
+        "bot": "telegram_config",
+        "saveDataDir": "",
+        "filterCommands": false,
+        "hasinput": false,
+        "inputs": 0,
+        "handleallupdates": false,
+        "handleprocessupdates": false,
+        "x": 190,
+        "y": 340,
+        "wires": [
+            [
+                "switch_commands"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "telegram_config",
+        "type": "telegram bot",
+        "botname": "tvl_lab2_Yasevich_bot",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "testenvironment": false,
+        "updatemode": "polling",
+        "pollinterval": 300,
+        "usesocks": false,
+        "sockshost": "",
+        "socksport": 6667,
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbothost": "",
+        "localbotport": 8443,
+        "publicbotport": 8443,
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    },
+    {
+        "id": "85833977a269050a",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-contrib-telegrambot": "19.0.3"
+        }
+    }
+]
