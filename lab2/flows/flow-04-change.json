@@ -1,0 +1,93 @@
+[
+    {
+        "id": "67db3fc534aeea60",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "31068354729b09f9",
+        "type": "inject",
+        "z": "67db3fc534aeea60",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "iso",
+        "payloadType": "date",
+        "x": 330,
+        "y": 620,
+        "wires": [
+            [
+                "a71524a77725e6bd"
+            ]
+        ]
+    },
+    {
+        "id": "a71524a77725e6bd",
+        "type": "change",
+        "z": "67db3fc534aeea60",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "lab2/Yasevich/change",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "timestamp",
+                "pt": "msg",
+                "to": "iso",
+                "tot": "date"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Hehehehehehe",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 620,
+        "y": 620,
+        "wires": [
+            [
+                "b7400b9b5a6d27cd"
+            ]
+        ]
+    },
+    {
+        "id": "b7400b9b5a6d27cd",
+        "type": "debug",
+        "z": "67db3fc534aeea60",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 620,
+        "wires": []
+    }
+]
