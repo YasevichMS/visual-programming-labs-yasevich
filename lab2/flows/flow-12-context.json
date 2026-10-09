@@ -1,0 +1,117 @@
+[
+    {
+        "id": "2f1fe235e75989dd",
+        "type": "tab",
+        "label": "Flow Context",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "bc6c7aa4cf82ae80",
+        "type": "inject",
+        "z": "2f1fe235e75989dd",
+        "name": "Увеличить счётчик",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 160,
+        "wires": [
+            [
+                "b8f21450179ec584"
+            ]
+        ]
+    },
+    {
+        "id": "b8f21450179ec584",
+        "type": "function",
+        "z": "2f1fe235e75989dd",
+        "name": "Счётчик (flow context)",
+        "func": "// Читаем текущее значение из flow context\nlet count = flow.get(\"counter\") || 0;\n\n// Увеличиваем\ncount = count + 1;\n\n// Сохраняем обратно в flow context\nflow.set(\"counter\", count);\n\n// Отправляем в debug\nmsg.payload = {\n    message: \"Счётчик увеличен\",\n    counter: count,\n    storedIn: \"flow context\"\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 160,
+        "wires": [
+            [
+                "beefa4cf8ca1dffc"
+            ]
+        ]
+    },
+    {
+        "id": "8dbc16dbe57605cc",
+        "type": "inject",
+        "z": "2f1fe235e75989dd",
+        "name": "Прочитать счётчик",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 280,
+        "wires": [
+            [
+                "5f66baf12219a4c8"
+            ]
+        ]
+    },
+    {
+        "id": "5f66baf12219a4c8",
+        "type": "function",
+        "z": "2f1fe235e75989dd",
+        "name": "Читать из context",
+        "func": "const count = flow.get(\"counter\") || 0;\n\nmsg.payload = {\n    message: \"Текущее значение из flow context\",\n    counter: count\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 280,
+        "wires": [
+            [
+                "beefa4cf8ca1dffc"
+            ]
+        ]
+    },
+    {
+        "id": "beefa4cf8ca1dffc",
+        "type": "debug",
+        "z": "2f1fe235e75989dd",
+        "name": "Результат",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 220,
+        "wires": []
+    }
+]
