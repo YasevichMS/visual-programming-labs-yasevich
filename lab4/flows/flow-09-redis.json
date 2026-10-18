@@ -1,0 +1,97 @@
+{
+  "name": "flow-09-redis",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -416,
+        0
+      ],
+      "id": "ab41a656-3732-4fe4-b42d-8bc56eb6f8cc",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "yasevich",
+        "value": "lab4/Yasevich/redis_1"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -192,
+        0
+      ],
+      "id": "5efa8e8f-f5a7-4fa2-ad57-72b42079d6a9",
+      "name": "Redis",
+      "credentials": {
+        "redis": {
+          "id": "RRS79B1fdHWs2e55",
+          "name": "Redis Yasevich"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "value",
+        "key": "yasevich",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        32,
+        0
+      ],
+      "id": "fdcdd784-c5ba-4aea-9d33-b733ecbddffa",
+      "name": "Redis1",
+      "credentials": {
+        "redis": {
+          "id": "RRS79B1fdHWs2e55",
+          "name": "Redis Yasevich"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Redis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis": {
+      "main": [
+        [
+          {
+            "node": "Redis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "3161c1cf-b112-4927-b1f5-a39187dddd88",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "2bace94f9b0b33a6d9c454ea322b35aedc0656e7a96704d51e631dc1e2aa1601"
+  },
+  "nodeGroups": [],
+  "id": "U6OJBAfu1ZBR4awV",
+  "tags": []
+}
