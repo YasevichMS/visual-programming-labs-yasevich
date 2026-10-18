@@ -1,0 +1,86 @@
+{
+  "name": "flow-05-http",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -432,
+        0
+      ],
+      "id": "f90333be-816d-46ec-a513-25ad6b57de0e",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://api.chucknorris.io/jokes/random",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        -208,
+        0
+      ],
+      "id": "58c9b20f-ae3c-4146-98de-77c3cd009297",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nconst response = $input.first().json;\n\nreturn [{\n  json: {\n    student: 'Yasevich',\n    source: 'api.chucknorris.io',\n    joke: response.value || response,\n    id: response.id || null,\n    url: response.url || null,\n    receivedAt: new Date().toISOString()\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        16,
+        0
+      ],
+      "id": "9a2e743a-04d4-4429-a7c9-24f018a7f4e9",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "d8c90ade-b2b1-4a02-889a-3071b3fbd5e8",
+  "meta": {
+    "instanceId": "2bace94f9b0b33a6d9c454ea322b35aedc0656e7a96704d51e631dc1e2aa1601"
+  },
+  "nodeGroups": [],
+  "id": "SSU1umSo7oIOKNwt",
+  "tags": []
+}
