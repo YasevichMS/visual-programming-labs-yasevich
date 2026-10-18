@@ -1,0 +1,64 @@
+{
+  "name": "flow-06-schedule",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 1
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -368,
+        0
+      ],
+      "id": "2ab1f8f1-e479-4f8d-bed5-6743d7766af1",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nconst now = new Date();\n\nreturn [{\n  json: {\n    student: 'Yasevich',\n    topic: 'lab4/Yasevich/schedule',\n    currentTime: now.toISOString(),\n    localTime: now.toLocaleString('ru-RU'),\n    unix: Math.floor(now.getTime() / 1000),\n    message: 'Schedule Trigger fired'\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -144,
+        0
+      ],
+      "id": "136b243a-133b-4465-acac-5eabddbb542b",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "1f3c94a3-ec29-4b5c-9514-ddef6b364b36",
+  "meta": {
+    "instanceId": "2bace94f9b0b33a6d9c454ea322b35aedc0656e7a96704d51e631dc1e2aa1601"
+  },
+  "nodeGroups": [],
+  "id": "TasV2LT4fgWkAmHT",
+  "tags": []
+}
