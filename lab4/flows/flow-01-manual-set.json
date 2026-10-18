@@ -1,0 +1,95 @@
+{
+  "name": "flow-01-manual-set",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "5959f937-8869-4b16-aea3-22258d01f623",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5a30ed55-cdcf-4d21-b734-34c3e792b86a",
+              "name": "payload",
+              "value": "payload",
+              "type": "string"
+            },
+            {
+              "id": "a382a467-52a8-486e-ad91-fd8504b112d0",
+              "name": "topic",
+              "value": "lab4/Yasevich/basic",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        224,
+        0
+      ],
+      "id": "103a4f3a-2aca-40d4-96f3-5f74a654bfc3",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nconst items = $input.all();\nreturn items.map(item => ({\n  json: {\n    ...item.json,\n  }\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        0
+      ],
+      "id": "6d29fe16-6153-427b-908c-7a792b7af38e",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "be9f3f4c-76a4-43a2-9212-d5aa1822c6d5",
+  "meta": {
+    "instanceId": "2bace94f9b0b33a6d9c454ea322b35aedc0656e7a96704d51e631dc1e2aa1601"
+  },
+  "nodeGroups": [],
+  "id": "KHTXdWIvrppAXaFQ",
+  "tags": []
+}
