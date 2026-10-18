@@ -1,0 +1,77 @@
+{
+  "name": "flow-02-code",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -368,
+        -16
+      ],
+      "id": "cbb8c645-441b-404a-bda9-68d981804aca",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nconst surname = 'Yasevich';\nconst group = 'lab4';\n\nlet numbers = [1, 2, 3, 4, 5];          \nconst result = {                        \n  student: surname,\n  group: group,\n  sum: 0,\n  even: []\n};\n\nfor (let i = 0; i < numbers.length; i++) {   \n  const n = numbers[i];                      \n  result.sum += n;\n\n  if (n % 2 === 0) {                     \n    result.even.push(n);\n  } else {\n\n  }\n}\n\nconst payload = {\n  calculation: result,\n  timestamp: new Date().toISOString()\n};\n\n\nreturn [{ json: { payload } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -144,
+        -16
+      ],
+      "id": "48186c9d-9a40-4709-a885-64654382eaff",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        80,
+        -16
+      ],
+      "id": "80c6e3e6-5e21-481a-bf3f-0987136f3ed1",
+      "name": "No Operation, do nothing"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "0e1720c2-145a-41e6-afb5-d91fb0cc8e4d",
+  "meta": {
+    "instanceId": "2bace94f9b0b33a6d9c454ea322b35aedc0656e7a96704d51e631dc1e2aa1601"
+  },
+  "nodeGroups": [],
+  "id": "D7IhGYDgLoFsiDCB",
+  "tags": []
+}
